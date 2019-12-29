@@ -1,15 +1,26 @@
 plugins {
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
 }
 
-version 'unspecified'
-
-sourceCompatibility = 1.8
+group = 'se.magnus.microservices.util'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.2.RELEASE") }
 }

@@ -1,9 +1,7 @@
-package vn.com.acb.util;
+package vn.com.acb.util.http;
 
-import org.graalvm.compiler.lir.CompositeValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
