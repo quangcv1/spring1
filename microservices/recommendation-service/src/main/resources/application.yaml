@@ -4,3 +4,8 @@ logging:
   level:
     root: INFO
     vn.com.acb.microservices: DEBUG
+
+---
+spring.profiles: docker
+
+server.port: 8080
