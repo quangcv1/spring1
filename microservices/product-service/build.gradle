@@ -10,6 +10,7 @@ sourceCompatibility = '1.8'
 
 ext {
 	mapstructVersion = "1.3.1.Final"
+	springCloudVersion = "Greenwich.RELEASE"
 }
 
 repositories {
@@ -26,6 +27,9 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
 	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
 
+	implementation('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+	implementation('org.springframework.cloud:spring-cloud-starter-stream-kafka')
+
 	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -33,8 +37,15 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+	testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
 }
 
 test {
 	useJUnitPlatform()
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
