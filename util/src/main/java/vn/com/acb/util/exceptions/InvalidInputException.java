@@ -1,6 +1,6 @@
 package vn.com.acb.util.exceptions;
 
-public class InvalidInputException extends RuntimeException{
+public class InvalidInputException extends RuntimeException {
     public InvalidInputException() {
     }
 

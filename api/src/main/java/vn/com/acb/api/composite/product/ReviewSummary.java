@@ -1,6 +1,7 @@
 package vn.com.acb.api.composite.product;
 
 public class ReviewSummary {
+
     private final int reviewId;
     private final String author;
     private final String subject;

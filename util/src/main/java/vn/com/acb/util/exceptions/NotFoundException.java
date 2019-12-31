@@ -1,6 +1,6 @@
 package vn.com.acb.util.exceptions;
 
-public class NotFoundException extends RuntimeException{
+public class NotFoundException extends RuntimeException {
     public NotFoundException() {
     }
 

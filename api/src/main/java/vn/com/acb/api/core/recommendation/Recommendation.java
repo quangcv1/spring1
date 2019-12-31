@@ -1,9 +1,6 @@
 package vn.com.acb.api.core.recommendation;
 
 public class Recommendation {
-    /**
-     * DTO
-     */
     private int productId;
     private int recommendationId;
     private String author;

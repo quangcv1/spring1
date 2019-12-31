@@ -21,5 +21,4 @@ public class ProductServiceApplication {
 		String mongodDbPort = ctx.getEnvironment().getProperty("spring.data.mongodb.port");
 		LOG.info("Connected to MongoDb: " + mongodDbHost + ":" + mongodDbPort);
 	}
-
 }

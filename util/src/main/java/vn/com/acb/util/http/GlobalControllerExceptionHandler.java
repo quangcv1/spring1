@@ -15,7 +15,8 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 
 @RestControllerAdvice
-public class GlobalControllerExceptionHandler {
+class GlobalControllerExceptionHandler {
+
     private static final Logger LOG = LoggerFactory.getLogger(GlobalControllerExceptionHandler.class);
 
     @ResponseStatus(NOT_FOUND)
@@ -28,7 +29,8 @@ public class GlobalControllerExceptionHandler {
 
     @ResponseStatus(UNPROCESSABLE_ENTITY)
     @ExceptionHandler(InvalidInputException.class)
-    public @ResponseBody HttpErrorInfo handleInvalidInputException(ServerHttpRequest request, Exception ex) {
+    public @ResponseBody
+    HttpErrorInfo handleInvalidInputException(ServerHttpRequest request, Exception ex) {
 
         return createHttpErrorInfo(UNPROCESSABLE_ENTITY, request, ex);
     }
