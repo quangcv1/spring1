@@ -1,9 +1,6 @@
 package vn.com.acb.api.core.product;
 
 public class Product {
-    /**
-     * Data Transfer Object (DTO)
-     */
     private int productId;
     private String name;
     private int weight;
