@@ -16,12 +16,11 @@ import static org.junit.Assert.assertFalse;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static reactor.core.publisher.Mono.just;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=RANDOM_PORT, properties = {"spring.data.mongodb.port: 0"})
-class ProductServiceApplicationTests {
+public class ProductServiceApplicationTests {
 
 	@Autowired
 	private WebTestClient client;
@@ -112,7 +111,7 @@ class ProductServiceApplicationTests {
 				.accept(APPLICATION_JSON)
 				.exchange()
 				.expectStatus().isEqualTo(expectedStatus)
-				.expectHeader().contentType(APPLICATION_JSON_UTF8)
+				.expectHeader().contentType(APPLICATION_JSON)
 				.expectBody();
 	}
 
@@ -124,7 +123,7 @@ class ProductServiceApplicationTests {
 				.accept(APPLICATION_JSON)
 				.exchange()
 				.expectStatus().isEqualTo(expectedStatus)
-				.expectHeader().contentType(APPLICATION_JSON_UTF8)
+				.expectHeader().contentType(APPLICATION_JSON)
 				.expectBody();
 	}
 

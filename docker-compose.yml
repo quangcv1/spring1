@@ -23,7 +23,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
 
   product-composite:
@@ -36,25 +36,24 @@ services:
 
   # $ mongo
   mongodb:
-    image: mongo:3.6.9
+    image: mongo:4.2.2
     mem_limit: 350m
     ports:
       - "27017:27017"
-    command: mongod --smallfiles
+    #command: mongod --smallfiles
 
   # $ mysql -uroot -h127.0.0.1 -p
-  mysql:
-    image: mysql:5.7
+  postgres:
+    image: postgres:12.1
     mem_limit: 350m
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpwd
-      - MYSQL_DATABASE=review-db
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=pwd
+      - POSTGRES_DB=review_db
+      - POSTGRES_USER=review_db
+      - POSTGRES_PASSWORD=pwd
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-uuser", "-ppwd", "-h", "localhost"]
+      test: ["CMD-SHELL", "pg_isready -U review_db"]
       interval: 10s
       timeout: 5s
-      retries: 10
+      retries: 5

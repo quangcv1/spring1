@@ -8,6 +8,16 @@ group = 'vn.com.acb.microservices.composite.product'
 version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+ext {
+	set('springCloudVersion', "Hoxton.SR1")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
 repositories {
 	mavenCentral()
 	maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
