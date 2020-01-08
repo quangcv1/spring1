@@ -17,11 +17,15 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
+	imports {
+		mavenBom 'org.springframework.boot.experimental:spring-boot-bom-r2dbc:0.1.0.M3'
+	}
 }
 
 repositories {
 	mavenCentral()
 	maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {
@@ -37,7 +41,13 @@ dependencies {
 	//implementation('mysql:mysql-connector-java')
 	implementation("org.mapstruct:mapstruct:${mapstructVersion}")
 
-	runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot.experimental:spring-boot-starter-data-r2dbc'
+
+    runtimeOnly 'io.r2dbc:r2dbc-postgresql'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    testImplementation 'org.springframework.boot.experimental:spring-boot-test-autoconfigure-r2dbc'
+    testImplementation 'io.projectreactor:reactor-test'
 
 	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"

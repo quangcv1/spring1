@@ -3,20 +3,29 @@ server:
 
 # Strongly recommend to set this property to "none" in a production environment!
 
-
-spring.datasource:
-  url: jdbc:postgresql://localhost:5432/review_db
-  username: review_db
-  password: pwd
-
 spring:
-  datasource:
-    hikari:
-      maximum-pool-size: 5
-      initialization-fail-timeout: 60000
-  jpa:
-    hibernate:
-      ddl-auto: update
+  r2dbc:
+    url: r2dbc:pool:postgresql://127.0.0.1:5432/review_db
+    username: review_db
+    password: pwd
+    pool:
+      initial-size: 100
+      max-size: 500
+      max-idle-time: 30m
+      validation-query: SELECT 1
+#spring.datasource:
+#  url: jdbc:postgresql://localhost:5432/review_db
+#  username: review_db
+#  password: pwd
+#
+#spring:
+#  datasource:
+#    hikari:
+#      maximum-pool-size: 5
+#      initialization-fail-timeout: 60000
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
 
 spring.cloud.stream:
   defaultBinder: rabbit
